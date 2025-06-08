@@ -4,7 +4,9 @@ import _superagent from 'superagent';
 const superagent = superagentPromise(_superagent, global.Promise);
 
 // const API_ROOT = 'https://conduit.productionready.io/api';
-const API_ROOT = 'http://localhost:3000/api';
+// 本地调试地址
+// const API_ROOT = 'http://localhost:3000/api';
+const API_ROOT = 'http://115.120.251.181:3000/api';
 
 
 const encode = encodeURIComponent;
