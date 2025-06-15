@@ -4,6 +4,7 @@ WORKDIR /app
 COPY package*.json ./
 # 使用 npm ci 而不是 npm install 确保精确版本安装
 RUN npm install
+# 拷贝所有源代码
 COPY . .
 # 构建生产版本
 RUN npm run build
@@ -11,6 +12,7 @@ RUN npm run build
 # 阶段 2: 生产服务
 FROM nginx:1.23-alpine
 # 复制构建产物
+# 意思从第一阶段【build】copy 产物
 COPY --from=build /app/build /usr/share/nginx/html
 # 自定义 Nginx 配置 (需要您创建 nginx.conf 文件)
 COPY nginx.conf /etc/nginx/conf.d/default.conf
